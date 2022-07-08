@@ -14,7 +14,7 @@ public class PointTest {
     }
 
     @Test
-    public void when000to550then8dot66() {
+    public void when000to555then8dot66() {
         double expected = 8.66;
         Point a = new Point(0, 0, 0);
         Point b = new Point(5, 5, 5);
