@@ -37,6 +37,14 @@ public class Tracker {
         return true;
     }
 
+    public boolean delete(int id) {
+        items[id] = null;
+        System.arraycopy(items, id + 1, items, id, size - id);
+        items[size - 1] = null;
+        size--;
+        return true;
+    }
+
     public Item[] findAll() {
         return Arrays.copyOf(items, size);
     }
