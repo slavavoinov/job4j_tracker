@@ -8,25 +8,6 @@ public class Tracker {
     private int ids = 1;
     private int size = 0;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Tracker tracker = (Tracker) o;
-        return ids == tracker.ids && size == tracker.size && Arrays.equals(items, tracker.items);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(ids, size);
-        result = 31 * result + Arrays.hashCode(items);
-        return result;
-    }
-
     public Item add(Item item) {
         item.setId(ids++);
         items[size++] = item;
@@ -46,24 +27,18 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] rsl = new Item[items.length];
-        for (int index = 0; index < items.length; index++) {
-            if (items[index] != null) {
-                rsl[index] = items[index];
-                size++;
-            }
-        }
-        return Arrays.copyOf(rsl, size);
+        return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
-        Item[] rsl = new Item[items.length];
-        for (int index = 0; index < items.length; index++) {
+        Item[] rsl = new Item[size];
+        int count = 0;
+        for (int index = 0; index < size; index++) {
             if (key.equals(items[index].getName())) {
-                rsl[index] = items[index];
-                size++;
+                rsl[count] = items[index];
+                count++;
             }
         }
-        return Arrays.copyOf(rsl, size);
+        return Arrays.copyOf(rsl, count);
     }
 }
