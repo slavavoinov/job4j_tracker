@@ -41,11 +41,15 @@ public class Tracker {
     }
 
     public boolean delete(int id) {
-        items[id] = null;
-        System.arraycopy(items, id + 1, items, id, size - id);
-        items[size - 1] = null;
-        size--;
-        return true;
+        int index = indexOf(id);
+        if (index != -1) {
+            items[id] = null;
+            System.arraycopy(items, id + 1, items, id, size - id);
+            items[size - 1] = null;
+            size--;
+            return true;
+        }
+        return false;
     }
 
     public Item[] findAll() {
