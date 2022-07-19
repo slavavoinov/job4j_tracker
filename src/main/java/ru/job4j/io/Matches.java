@@ -12,7 +12,7 @@ public class Matches {
             String player = turn ? "First player" : "Second player";
             System.out.println(player + " enter 1,2 or 3:");
             int matches = Integer.parseInt(input.nextLine());
-            boolean rsl = matches > 0 && matches < 4 && matches <= count;
+            boolean rsl = matches > 0 && matches <= Math.min(count, 3);
             if (rsl) {
                 count -= matches;
                 System.out.println(count + " matches left on the table");
