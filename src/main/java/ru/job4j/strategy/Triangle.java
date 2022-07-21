@@ -9,4 +9,3 @@ public class Triangle implements Shape {
                 + "/_____\\" + ln;
     }
 }
-
