@@ -3,11 +3,12 @@ package ru.job4j.poly;
 public class Bus implements Transport {
     @Override
     public void ride() {
+        System.out.println("Мы едем, едем, едем в далекие края...");
     }
 
     @Override
     public void passengers(int count) {
-        count += count;
+        System.out.println("Количество пассажиров" + count);
     }
 
     @Override
