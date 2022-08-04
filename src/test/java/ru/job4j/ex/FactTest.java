@@ -24,3 +24,4 @@ class FactTest {
         assertThat(result).isEqualTo(expected);
     }
 }
+
