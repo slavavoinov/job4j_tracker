@@ -1,8 +1,9 @@
 package ru.job4j.tracker;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.isOneOf;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
@@ -132,5 +133,26 @@ public class StartUITest {
                         + "0. Find items by name" + ln
                         + "1. Exit" + ln
         ));
+    }
+
+    @Test
+    public void whenInvalidExit() {
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"7", "0"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Exit" + ln
+                        + "Wrong input, you can select: 0 .. 0" + ln
+                        + "Menu:" + ln
+                        + "0. Exit" + ln
+        );
     }
 }
