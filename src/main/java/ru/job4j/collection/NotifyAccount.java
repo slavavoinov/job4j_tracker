@@ -9,7 +9,6 @@ public class NotifyAccount {
         for (Account element : accounts) {
             rsl.add(element);
         }
-        /* for-each accounts to HashSet; */
         return rsl;
     }
 }
