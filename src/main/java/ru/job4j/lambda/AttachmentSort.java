@@ -22,11 +22,9 @@ public class AttachmentSort {
         attachments.sort(comparator);
         System.out.println(attachments);
 
-        Comparator comparator1 =  new Comparator() {
+        Comparator<Attachment> comparator1 =  new Comparator<Attachment>() {
             @Override
-            public int compare(Object o1, Object o2) {
-                Attachment left = (Attachment) o1;
-                Attachment right = (Attachment) o2;
+            public int compare(Attachment left, Attachment right) {
                 return left.getName().compareTo(right.getName());
             }
         };
