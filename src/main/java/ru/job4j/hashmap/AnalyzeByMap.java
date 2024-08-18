@@ -46,7 +46,6 @@ public class AnalyzeByMap {
 
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> label = new ArrayList<>();
-        Label student = null;
         int score = 0;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
@@ -55,16 +54,11 @@ public class AnalyzeByMap {
             label.add(new Label(pupil.name(), score));
             score = 0;
         }
-        label.sort(Comparator.naturalOrder());
-        for (Label value : label) {
-            student = value;
-        }
-        return student;
+        return Collections.max(label);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
         Map<String, Integer> map = new LinkedHashMap<>();
-        Label discipline = null;
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 map.put(subject.name(),
@@ -76,10 +70,6 @@ public class AnalyzeByMap {
         for (String key : map.keySet()) {
             label.add(new Label(key, (double) map.get(key)));
         }
-        label.sort(Comparator.naturalOrder());
-        for (Label value : label) {
-            discipline = value;
-        }
-        return discipline;
+        return Collections.max(label);
     }
 }
